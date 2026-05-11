@@ -4,27 +4,25 @@ Plain **HTML + CSS + JS** in `docs/` so [GitHub Pages](https://pages.github.com/
 
 ## Publish (from scratch)
 
-1. On GitHub, create an **empty** repository first (same name you will use in `git remote`), e.g. [github.com/new](https://github.com/new) → name **`scholarskool-clone`** or **`scholarskool-static`**. Do **not** add README, .gitignore, or license (avoids merge conflicts).
-2. From this folder:
+Remote repo: **[github.com/Ashu9594/scholarskool](https://github.com/Ashu9594/scholarskool)**.
 
-```bash
-cd scholarskool-static
-git init -b main
-git add .
-git commit -m "Initial static site"
-git remote add origin https://github.com/YOUR_USER/YOUR_REPO.git
-git push -u origin main
-```
-
-3. GitHub → **Settings** → **Pages**  
+1. GitHub → **Settings** → **Pages**  
    - **Source:** Deploy from a branch  
    - **Branch:** `main`  
    - **Folder:** `/docs`  
    - Save.
 
-4. After 1–2 minutes, open:
+2. After 1–2 minutes, open:
 
-`https://YOUR_USER.github.io/YOUR_REPO/`
+**[https://ashu9594.github.io/scholarskool/](https://ashu9594.github.io/scholarskool/)**
+
+Pushes from this folder:
+
+```bash
+cd scholarskool-static
+git remote set-url origin https://github.com/Ashu9594/scholarskool.git
+git push -u origin main
+```
 
 Use a **hard refresh** (Cmd+Shift+R) if an old site was cached.
 
