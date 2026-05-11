@@ -4,7 +4,7 @@ Plain **HTML + CSS + JS** in `docs/` so [GitHub Pages](https://pages.github.com/
 
 ## Publish (from scratch)
 
-1. On GitHub, **delete** the old repo if you want a clean name, or create a **new** empty repository (e.g. `scholarskool-static`).
+1. On GitHub, create an **empty** repository first (same name you will use in `git remote`), e.g. [github.com/new](https://github.com/new) → name **`scholarskool-clone`** or **`scholarskool-static`**. Do **not** add README, .gitignore, or license (avoids merge conflicts).
 2. From this folder:
 
 ```bash
