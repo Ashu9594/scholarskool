@@ -41,6 +41,7 @@
 
   var form = document.getElementById("contact-form");
   var note = document.getElementById("form-note");
+  var submitBtn = document.getElementById("contact-submit");
   if (form && note) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -58,15 +59,60 @@
         note.textContent = "Please enter a valid email.";
         return;
       }
-      var subject = encodeURIComponent("ScholarSkool enquiry — " + school);
-      var body = encodeURIComponent(
-        "Name: " + name + "\nReply email: " + email + "\nSchool: " + school + "\n\n" + msg,
-      );
-      window.location.href = "mailto:info@scholarskool.com?subject=" + subject + "&body=" + body;
+
+      var originalLabel = submitBtn ? submitBtn.textContent : "Submit Enquiry";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+      }
       note.hidden = false;
-      note.textContent =
-        "If your mail app opened, send from there. Otherwise email info@scholarskool.com.";
-      form.reset();
+      note.textContent = "Sending your enquiry...";
+
+      var payload = {
+        access_key: "08b5a4c5-c9e6-48ca-ba07-c9884bbdb82f",
+        subject: "New ScholarSkool enquiry from " + school,
+        from_name: "ScholarSkool Website",
+        name: name,
+        email: email,
+        school: school,
+        message: msg,
+        botcheck: false,
+      };
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      })
+        .then(function (res) {
+          return res.json().catch(function () {
+            return {};
+          });
+        })
+        .then(function (data) {
+          if (data && data.success) {
+            note.textContent =
+              "Thanks! Your enquiry has been sent. We'll get back to you at " + email + ".";
+            form.reset();
+          } else {
+            var reason = (data && data.message) ? data.message : "please try again later";
+            note.textContent =
+              "Couldn't send right now (" + reason + "). Email info@scholarskool.com directly.";
+          }
+        })
+        .catch(function () {
+          note.textContent =
+            "Network issue. Please check your connection or email info@scholarskool.com directly.";
+        })
+        .finally(function () {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalLabel;
+          }
+        });
     });
   }
 })();
