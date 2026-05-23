@@ -166,16 +166,7 @@
           <div class="form-panel">
             <h2 class="section-title">Partner With ScholarSkool</h2>
             <p class="section-lead">Share a few details — we’ll respond with next steps.</p>
-            <form
-              id="contact-form"
-              class="form"
-              action="https://api.web3forms.com/submit"
-              method="POST"
-            >
-              <input type="hidden" name="access_key" value="08b5a4c5-c9e6-48ca-ba07-c9884bbdb82f" />
-              <input type="hidden" name="subject" value="New ScholarSkool enquiry from website" />
-              <input type="hidden" name="from_name" value="ScholarSkool Website" />
-              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+            <form id="contact-form" class="form">
               <label class="sr-only" for="school">School name</label>
               <input id="school" name="school" type="text" required placeholder="School Name" />
               <label class="sr-only" for="name">Your name</label>
@@ -184,7 +175,7 @@
               <input id="email" name="email" type="email" required placeholder="Email" />
               <label class="sr-only" for="msg">Message</label>
               <textarea id="msg" name="message" required rows="5" placeholder="Tell us about your school"></textarea>
-              <button type="submit" class="btn btn-primary btn-block" id="contact-submit">Submit Enquiry</button>
+              <button type="submit" class="btn btn-primary btn-block">Submit Enquiry</button>
               <p id="form-note" class="form-note" role="status" hidden></p>
             </form>
           </div>
