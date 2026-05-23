@@ -1,6 +1,8 @@
 # ScholarSkool (static)
 
-Plain **HTML + CSS + JS** in `docs/` so [GitHub Pages](https://pages.github.com/) works without Actions, without Next.js, and without `basePath` issues.
+**Status: site paused.** `docs/` only serves a temporary offline page. The full site is saved in `paused-site/` for when you want to go live again.
+
+Plain **HTML + CSS + JS** in `docs/` (when live) so [GitHub Pages](https://pages.github.com/) works without Actions, without Next.js, and without `basePath` issues.
 
 ## Publish (from scratch)
 
@@ -35,3 +37,9 @@ cd docs && python3 -m http.server 8080
 ```
 
 Then visit `http://localhost:8080/`.
+
+## Restore live site
+
+1. Copy `paused-site/*` back into `docs/` (restore `index.html`, `css/`, `js/`).
+2. Add `docs/CNAME` with `scholarskool.com` if using the custom domain.
+3. Push to `main`, then GitHub **Settings → Pages** → set custom domain and **Enforce HTTPS**.
